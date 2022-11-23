@@ -22,7 +22,7 @@ export default function App() {
     //Display business ID's
     const optionElements = businesses.map((item, index) => {
         return (
-            <option value={index}>
+            <option key={index} value={index}>
                 {item.business_uid}
             </option>
             )
@@ -37,10 +37,11 @@ export default function App() {
                   {optionElements}
               </select>
           </h3>
-          
+
           <p className="api">
+              {selected == -1 ? "" : <img src={businesses[selected].business_image} width={"150"} height={"150"} alt={"Business Image"} />}
               {selected == -1 ? "" :
-                  "business_uid: " + businesses[selected].business_uid + "\n" +
+                  "\n" + "business_uid: " + businesses[selected].business_uid + "\n" +
                   "business_created_at: " + businesses[selected].business_created_at + "\n" +
                   "business_name: " + businesses[selected].business_name + "\n" +
                   "business_type: " + businesses[selected].business_type + "\n" +
@@ -93,7 +94,6 @@ export default function App() {
                   "can_cancel: " + businesses[selected].can_cancel + "\n" +
                   "delivery: "  + businesses[selected].delivery + "\n" +
                   "reusable: " + businesses[selected].reusable + "\n" +
-                  "business_image: " + businesses[selected].business_image + "\n" +
                   "business_password: " + businesses[selected].business_password + "\n" +
                   "bus_guid_device_id_notification: " + businesses[selected].bus_guid_device_id_notification + "\n" +
                   "platform_fee: " + businesses[selected].platform_fee + "\n" +
